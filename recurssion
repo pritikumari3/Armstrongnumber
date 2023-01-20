@@ -1,0 +1,129 @@
+1.
+import java.util.*;
+import java.util.Scanner;
+public class Test{
+        static int level = -1;
+        public static void main(String[] args){
+                Scanner scn = new Scanner(System.in);
+                System.out.println("Enter the number n: ");
+                int n = scn.nextInt();
+                int digits = 0;
+                int temp = n;
+                while(temp > 0){
+                        digits++;
+                        temp/=10;
+                }
+                if(n == isArmstrong(n , digits))
+                        System.out.println("yes");
+                else
+                        System.out.println("no");
+        }
+        public static int pow(int a, int b){
+                if(b == 0)return 1;
+                if(b%2 == 0)return pow(a , b/2) * pow(a , b/2);
+                return a * pow(a  , b/2) * pow(a , b/2);
+        }
+        public static int isArmstrong(int n , int dig){
+                if(n == 0)return 0;
+                return pow(n%10 , dig) + isArmstrong(n/10 , dig);
+                
+             }
+             }
+        
+     2.
+     import java.util.*;
+import java.util.Scanner;
+public class Test{
+        static int level = -1;
+        public static void main(String[] args){
+                Scanner scn = new Scanner(System.in);
+                System.out.println("Enter the numbers: ");
+                int x = scn.nextInt();
+                int y = scn.nextInt();
+                System.out.println(product(x,y));
+        }
+        public static int product(int x, int y) {
+                // if x is less than y swap the numbers
+                if (x < y)
+                return product(y, x);
+                        // iteratively calculate y times sum of x
+                else if (y != 0)
+                        return (x + product(x, y - 1));
+                        // if any of the two numbers is zero return zero
+                else
+                        return 0;
+        }
+}
+
+3.
+import java.util.*;
+import java.util.Scanner;
+public class Test{
+        static int level = -1;
+        public static void main(String[] args){
+                Scanner scn = new Scanner(System.in);
+                System.out.println("Enter the number n: ");
+                int n = scn.nextInt();
+                if (isPrime(n, 2))
+                        System.out.println("Yes");
+                else
+                        System.out.println("No");
+        }
+        public static boolean isPrime(int n, int i) {
+                if (n <= 2)
+                        return (n == 2) ? true : false;
+                if (n % i == 0)
+                        return false;
+                if (i * i > n)
+                        return true;
+              return isPrime(n, i + 1);
+              }
+        }
+        
+     4.
+     import java.util.*;
+import java.util.Scanner;
+public class Test{
+        static int level = -1;
+        public static void main(String[] args){
+                Scanner scn = new Scanner(System.in);
+                System.out.println("Enter the number n: ");
+                int n = scn.nextInt();
+                System.out.println(find(n));
+        }
+        public static int find(int decimal_number) {
+                if (decimal_number == 0)
+                        return 0;
+                else
+                        return (decimal_number % 2 + 10 *
+                                find(decimal_number / 2));
+        }
+}
+5.
+import java.util.*;
+import java.util.Scanner;
+public class Test{
+        static int level = -1;
+        public static void main(String[] args){
+                Scanner scn = new Scanner(System.in);
+                System.out.println("Enter the binary number n: ");
+                int n = scn.nextInt();
+                System.out.println(binary_to_gray(n, 0));
+        }
+        public static int binary_to_gray(int n, int i) {
+                int a, b;
+                int result = 0;
+                if (n != 0) {
+                        
+                        a = n % 10;
+                        n = n / 10;
+                       
+                        b = n % 10;
+                        if ((a & ~b) == 1 || (~a & b) == 1) {
+                                result = (int)(result + Math.pow(10, i));
+                        }
+                        return binary_to_gray(n, ++i) + result;
+                }
+                return 0;
+        }
+}
